@@ -238,7 +238,7 @@ Vue.createApp({
     progress.width = "20%"
 
     //Load gears
-    this._gears =[...await fetch("/static/gear/list.json").then(response => response.json())].map(gear => ({...gear, owned:false}))
+    this._gears =[...await fetch("/static/gear/list.json").then(response => response.json())].map(gear => ({...gear, owned:this.has(gear)}))
     progress.width = "40%"
     this._cached.skills = [...new Set(this._gears.map(({skill}) => skill))].filter(skill => skill !== "None")
     this._cached.brands = [...new Set(this._gears.map(({brand}) => brand))]
@@ -246,7 +246,7 @@ Vue.createApp({
     progress.width = "50%"
 
     //Load weapons
-    this._weapons =[...await fetch("/static/weapon/list.json").then(response => response.json())].map(weapon => ({...weapon, owned:false}))
+    this._weapons =[...await fetch("/static/weapon/list.json").then(response => response.json())].map(weapon => ({...weapon, owned:this.has(weapon)}))
     progress.width = "70%"
 
     //Load previous settings

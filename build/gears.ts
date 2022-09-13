@@ -2,7 +2,7 @@
 import {url, save, download, log} from "./tools.ts"
 
 //Build data
-export async function build(version = "110") {
+export async function build(version:string) {
   const data = []
   for (const {type, link} of [
     {type:"clothes", link:url(`data/mush/${version}/GearInfoClothes.json`)},
@@ -48,7 +48,7 @@ export async function build(version = "110") {
   //Download images
   await Promise.allSettled(data.map(({id}) => download(url(`images/gear/${id}.webp`), `static/gear/${id}.webp`)))
   await Promise.allSettled([...new Set(data.map(({brand}) => brand))].map(id => download(url(`images/brand/${id}.webp`), `static/brand/${id}.webp`)))
-  await Promise.allSettled([...new Set(data.map(({skill}) => skill))].map(id => download(url(`images/skill/${id}.webp`), `static/skill/${id}.webp`)))
+  await Promise.allSettled(["Unknown", ...new Set(data.map(({skill}) => skill))].map(id => download(url(`images/skill/${id}.webp`), `static/skill/${id}.webp`)))
 
   //Save data
   await save(`static/gear/list.json`, data)

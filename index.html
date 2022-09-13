@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Splatoon 3 Gears search engine and interactive checklist.">
+    <title>Splatoon 3 - Gear checklist</title>
+    <link rel="icon" type="image/webp" href="/static/assets/favicon.webp" />
+    <link rel="icon" href="/static/assets/icon.webp" sizes="114x114">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/assets/icon.webp">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/assets/icon.webp">
+    <link href="https://fonts.googleapis.com/css?family=Capriola" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+
+    <div class="loading">
+      <img src="/static/assets/loading.webp" alt="">
+      <div class="progress">
+        <div class="inner"></div>
+      </div>
+    </div>
+
+    <main>
+      <nav>
+        <section class="condensed">
+          <div class="controls" @click="menu($event)">
+            <img src="/static/assets/controls.webp" alt="">
+          </div>
+          <div class="category" v-for="type in ['head', 'clothes', 'shoes']" :class="{selected:filters.types.has(type)}" @click="filters.types.has(type) ? filters.types.delete(type) : filters.types.add(type)">
+            <img :src="`/static/assets/${type}.webp`" alt=""> {{ text?.filter[type] }}
+          </div>
+          <div class="grow"></div>
+          <div class="logo">
+            <img src="/images/logo.webp" alt="">
+          </div>
+        </section>
+        <div class="collapse">
+          <section class="list">
+            <div class="brand" v-for="brand in brands" :key="brand.id" :class="{selected:filters.brands.has(brand.id)}" @click="filters.brands.has(brand.id) ? filters.brands.delete(brand.id) : filters.brands.add(brand.id)">
+              <img :src="brand.icon" alt="" :title="brand.name">
+            </div>
+          </section>
+          <section class="list">
+            <div class="skill" v-for="skill in skills" :key="skill.id" :class="{selected:filters.skills.has(skill.id)}" @click="filters.skills.has(skill.id) ? filters.skills.delete(skill.id) : filters.skills.add(skill.id)">
+              <img :src="skill.icon" alt="" :title="`${skill.name}: ${skill.description}`">
+            </div>
+          </section>
+          <section class="advanced">
+            <div class="list">
+              <select v-model="language">
+                <option v-for="({flag, name}, id) in languages" :value="id" :key="id">{{ flag }} {{ name }}</option>
+              </select>
+              <select v-model="sort.mode">
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+                <option value="owned">{{ text?.sort.owned }}</option>
+                <option value="type">{{ text?.sort.type }}</option>
+                <option value="brand">{{ text?.sort.brand }}</option>
+                <option value="skill">{{ text?.sort.skill }}</option>
+                <option value="level">{{ text?.sort.level }}</option>
+              </select>
+              <label class="search">
+                🔍 <input v-model="filters.name" type="text">
+              </label>
+            </div>
+            <div class="progress">
+              <div class="inner" :style="{width: `${100*progress.current/progress.total}%`}"></div>
+              <div class="text">{{ progress.current }} / {{ progress.total }}</div>
+            </div>
+          </section>
+        </div>
+      </nav>
+
+      <section class="gears list">
+        <template v-if="gears.length">
+          <article class="gear" v-for="gear in gears" :key="gear.id" :class="{owned:gear.owned, [gear.type]:true}" @click="toggle(gear)">
+            <span class="id">{{ gear.id }}</span>
+            <figure>
+              <img :src="gear.icon" alt="">
+              <figcaption>{{ gear.name }}</figcaption>
+            </figure>
+            <footer>
+              <div class="shade"></div>
+              <div class="text text-owned">
+                {{ text.owned }}
+              </div>
+              <div class="text text-not-owned">
+                <template v-if="gear.obtention === 'shop'">
+                  <img src="/images/cash.png" alt="$"> {{ gear.price }}
+                </template>
+                <template v-else>
+                  <img :src="`/static/assets/${gear.obtention}.webp`" alt="*"> {{ text[gear.obtention] }}
+                </template>
+              </div>
+            </footer>
+            <aside class="brand">
+              <img :src="gear.brand.icon" alt="" :title="gear.brand.name">
+            </aside>
+            <aside class="skill">
+              <img :src="gear.skill.icon" alt="" :title="`${gear.skill.name}: ${gear.skill.description}`">
+            </aside>
+            <aside class="slot" v-for="i in (1+gear.rarity)" :data-i="i">
+              <img src="/static/skill/Unknown.webp" alt="">
+            </aside>
+          </article>
+        </template>
+        <template v-else>
+          <p>
+            {{ text?.filter.empty }}
+          </p>
+        </template>
+      </section>
+
+      <section class="weapons list" v-if="false">
+        <template v-if="weapons.length">
+          <article class="weapon" v-for="weapon in weapons" :key="weapon.id" :class="{owned:weapon.owned}" @click="toggle(weapon)">
+            <span class="id">{{ weapon.id }}</span>
+            <figure>
+              <img :src="weapon.icon" alt="">
+              <figcaption>{{ weapon.name }}</figcaption>
+            </figure>
+            <footer>
+              <div class="shade"></div>
+              <div class="text text-owned">
+                {{ text.owned }}
+              </div>
+              <div class="text text-not-owned">
+                Level {{ weapon.level }}
+              </div>
+            </footer>
+            <aside class="special">
+              <img :src="weapon.special.icon" alt="" :title="`${weapon.special.name}: ${weapon.special.description}`">
+            </aside>
+          </article>
+        </template>
+        <template v-else>
+          <p>
+            {{ text?.filter.empty }}
+          </p>
+        </template>
+      </section>
+
+      <dialog :open="dialog.help">
+        <p>
+          This web app uses your browser's <a href="https://developer.mozilla.org/docs/Web/API/Window/localStorage">local storage</a> to save your progress.
+        </p>
+        <p>
+          Tap on a gear to mark it as owned, and use the menu at the top to filter and sort gears by brand, skill, and more.
+          Your overall collection progress is displayed by the tracking bar in the right top corner.
+        </p>
+        <p>
+          Leave your mouse over a brand or skill to see its name and description.
+        </p>
+        <div class="close" @click="dialog.help = false">
+          {{ text?.ok }}
+        </div>
+      </dialog>
+
+      <dialog :open="dialog.reset">
+        <p>
+          Your collection progress has been reset!
+        </p>
+        <div class="close" @click="dialog.reset = false">
+          {{ text?.ok }}
+        </div>
+      </dialog>
+      <dialog :open="dialog.importable">
+        <p v-else>
+          You can import your collection progress by pasting its state in the text field below.
+        </p>
+        <textarea v-model="importable"></textarea>
+        <div class="close" @click="importer(true)">
+          {{ text?.ok }}
+        </div>
+      </dialog>
+      <dialog :open="dialog.imported">
+        <p v-if="dialog.imported?.message">
+          Failed to import your collection progress...<br><br>
+          ({{ dialog.imported.message }})
+        </p>
+        <p v-else>
+          Your collection progress has been imported!
+        </p>
+        <div class="close" @click="dialog.imported = false">
+          {{ text?.ok }}
+        </div>
+      </dialog>
+      <dialog :open="dialog.exported">
+        <p>
+          Your collection progress has been exported!
+        </p>
+        <textarea :value="importable" disabled></textarea>
+        <div class="close" @click="dialog.exported = false">
+          {{ text?.ok }}
+        </div>
+      </dialog>
+
+      <div class="backdrop"></div>
+
+
+      <div class="legal">
+        <div class="tools">
+          <a href="#" @click="help">Help</a>
+          <a href="#" @click="reset">Reset progression</a>
+          <a href="#" @click="importer">Import progression</a>
+          <a href="#" @click="exporter">Export progression</a>
+        </div>
+        App developped by <a href="https://github.com/lowlighter">@lowlighter</a> (source code is available on <a href="https://github.com/lowlighter/splatoon">GitHub</a>).<br>
+        Based on the datamine of <a href="https://github.com/Leanny">@Leanny</a>.<br><br>
+        Splatoon and all related copyrights/assets used on this page are the property of Nintendo.<br><br>
+      </div>
+
+    </main>
+
+    <script src="https://unpkg.com/vue@3.2.39/dist/vue.global.prod.js"></script>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

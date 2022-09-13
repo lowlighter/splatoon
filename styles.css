@@ -1,0 +1,455 @@
+/* General */
+body {
+  background: url(/images/background.webp) no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Capriola","Scada",sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+main {
+  min-height: 60vh;
+}
+
+dialog {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 333333;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 36px;
+  max-width: 700px;
+  transform: rotate(-2deg);
+}
+
+dialog .close {
+  float: right;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: url(/images/ink.png) no-repeat center center fixed;
+  background-size: contain;
+  color: black;
+  padding: 28px;
+  cursor: pointer;
+}
+
+dialog .close:hover {
+  background-image: url(/images/ink-hover.png);
+  color: white;
+}
+
+dialog[open] ~ .backdrop {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 333332;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+a, a:visited {
+  color: #3498DB;
+  text-decoration: none;
+}
+
+textarea {
+  width: 80%;
+  margin: 4px 10%;
+  padding: 8px;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: monospace;
+  font-size: 12px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Loading */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  z-index: 33333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Progress bars */
+.progress {
+  height: 28px;
+  width: 200px;
+  border-radius: 10px;
+  background: black;
+  overflow: hidden;
+  position: relative;
+  background-image: url(/images/stripe-bg.png);
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.progress .inner {
+  width: 0%;
+  height: 100%;
+  background-image: url(/images/stripe.png);
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.progress .text {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* Lists */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Menu */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 333;
+  background: url(/images/menu.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+  /* Menu controls and collapse */
+  nav .condensed {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav .condensed img {
+    margin: 2px;
+    height: 56px;
+  }
+  nav .grow {
+    flex-grow: 1;
+  }
+
+  nav .collapse {
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height .4s ease-in-out;
+  }
+  nav.expanded .collapse {
+    max-height: 460px;
+  }
+
+  nav .controls, nav .category {
+    border-radius: 4px;
+    margin: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: 4px;
+  }
+  nav .controls img, nav .category img {
+    height: 32px;
+    margin-right: 4px;
+  }
+  nav .controls:hover, nav .category:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  nav.expanded .controls, nav .category.selected {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  @media (min-width: 1280px) {
+    nav .collapse {
+      max-height: 460px;
+      transition: none;
+    }
+    nav .controls {
+      display: none;
+    }
+  }
+
+  /* Brands and skills filters */
+  nav .brand, nav .skill, nav .special {
+    cursor: pointer;
+    margin: 0px 6px;
+    border-radius: 4px;
+    padding: 2px;
+  }
+
+  nav .brand, nav .special {
+    height: 40px;
+    width: 40px;
+  }
+
+  nav .skill{
+    height: 32px;
+    width: 32px;
+  }
+
+  nav .skill.selected, nav .brand.selected, nav.special.selected {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  nav .skill:hover, nav .brand:hover, nav .special:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  /* Advanced filters and sorting options */
+  nav .advanced {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0px 8px 2px;
+  }
+
+  nav .advanced .list {
+    width: auto;
+  }
+
+  nav select, .search input[type="text"] {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+
+  nav select, .search {
+    background-color: #D6CCCA;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 28px;
+    border-radius: 10px;
+    margin-right: 4px;
+  }
+
+  .search {
+    padding: 0px 8px;
+    width: 160px;
+    display: flex;
+    align-items: center;
+  }
+
+/* Brands and skills */
+.brand img, .skill img, .special img {
+  height: 100%;
+  width: 100%;
+}
+
+/* Gears and weapons */
+.gears.list, .weapons.list {
+  margin-top: 30px;
+}
+nav + .gears.list, nav + .weapons.list {
+  margin-top: 70px;
+}
+
+@media (min-width: 1280px) {
+  nav + .gears.list, nav + .weapons.list {
+    margin-top: 190px;
+  }
+}
+.gear, .weapon {
+  cursor: pointer;
+  position: relative;
+  background-color: #3D3D3D;
+  border: 2px solid #B3AFAE;
+  height: 220px;
+  width: 190px;
+  margin: 10px;
+  overflow: hidden;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+}
+.gear:hover, .weapon:hover {
+  filter: brightness(1.3);
+}
+
+.gear.owned, .weapon.owned {
+  opacity: .4;
+}
+
+.gear .id, .weapon .id {
+  display: none;
+}
+
+.gear .brand, .weapon .special {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 42px;
+  width: 42px;
+  background-image: url(images/ink.png);
+  background-size: contain;
+}
+
+.gear .skill {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 36px;
+  width: 36px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.gear .slot {
+  position: absolute;
+  right: 12px;
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.gear .slot img {
+  height: 100%;
+  width: 100%;
+}
+
+.gear .slot[data-i="1"] {
+  top: 42px;
+}
+.gear .slot[data-i="2"] {
+  top: 64px;
+}
+.gear .slot[data-i="3"] {
+  top: 86px;
+}
+
+.gear footer, .weapon footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 42px;
+}
+
+.gear footer .shade, .gear footer .text, .weapon footer .shade, .weapon footer .text {
+  height: 38px;
+  position: absolute;
+  top: 2px;
+  left: -4px;
+  border-radius: 4px;
+}
+
+.gear footer .shade, .weapon footer .shade {
+  right: 4px;
+  background-color: #79F7D2;
+  transform: rotate(1deg);
+}
+
+.gear.head footer .shade {
+  background-color: #F0126F
+}
+
+.gear.shoes footer .shade {
+  background-color: #E76901;
+}
+
+.gear.clothes footer .shade {
+  background-color: #1CD5AD;
+}
+
+.gear footer .text, .weapon footer .text {
+  right: 6px;
+  background-color: #090909;
+  transform: rotate(-.5deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gear footer .text-owned, .weapon footer .text-owned {
+  display: none;
+}
+.gear.owned footer .text-not-owned, .weapon.owned footer .text-not-owned {
+  display: none;
+}
+.gear.owned footer .text-owned, .weapon.owned footer .text-owned {
+  display: flex;
+}
+
+.gear footer .text img, .weapon footer .text img {
+  margin-right: 5px;
+  height: 1em;
+  width: 1em;
+}
+
+.gear figure, .weapon figure {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 30px;
+  background-color: #D6CCCA;
+  transform: rotate(-1deg);
+}
+
+.gear figure img, .weapon figure img {
+  width: 120px;
+  height: 120px;
+}
+
+.gear figure figcaption, .weapon figure figcaption {
+  width: 160px;
+  text-align: center;
+  color: black;
+}
+
+/* Legal */
+.legal {
+  margin-top: 60px;
+  overflow: hidden;
+  width: 100%;
+  padding: 90px 0px 40px;
+  background-image: url(/images/footer.webp);
+  text-align: center;
+  color: black;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0px 12px 48px;
+}

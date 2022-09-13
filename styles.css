@@ -40,7 +40,7 @@ dialog .close {
   align-items: center;
   background: url(/images/ink.png) no-repeat center center fixed;
   background-size: contain;
-  color: black;
+  color: #3498DB;
   padding: 28px;
   cursor: pointer;
 }

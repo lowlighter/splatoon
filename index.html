@@ -77,7 +77,7 @@
           <article class="gear" v-for="gear in gears" :key="gear.id" :class="{owned:gear.owned, [gear.type]:true}" @click="toggle(gear)">
             <span class="id">{{ gear.id }}</span>
             <figure>
-              <img :src="gear.icon" alt="">
+              <img :src="gear.icon" alt="" loading="lazy">
               <figcaption>{{ gear.name }}</figcaption>
             </figure>
             <footer>
@@ -117,7 +117,7 @@
           <article class="weapon" v-for="weapon in weapons" :key="weapon.id" :class="{owned:weapon.owned}" @click="toggle(weapon)">
             <span class="id">{{ weapon.id }}</span>
             <figure>
-              <img :src="weapon.icon" alt="">
+              <img :src="weapon.icon" alt="" loading="lazy">
               <figcaption>{{ weapon.name }}</figcaption>
             </figure>
             <footer>

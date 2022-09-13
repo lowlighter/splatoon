@@ -48,6 +48,14 @@ Vue.createApp({
         localStorage.setItem(".sort", current.mode)
       },
       deep: true
+    },
+    //Dialog handler
+    dialog:{
+      handler(current) {
+        if (!current.help)
+          localStorage.setItem(".help", "1")
+      },
+      deep: true
     }
   },
   //Computed properties
@@ -253,11 +261,9 @@ Vue.createApp({
     this.sort.mode = localStorage.getItem(".sort") || "a-z"
     progress.width = "80%"
 
-    //Hello message
-    if (!localStorage.getItem(".hello")) {
+    //Help message
+    if (!localStorage.getItem(".help"))
       this.dialog.help = true
-      localStorage.setItem(".hello", "1")
-    }
 
     //Complete loading
     progress.width = "100%"

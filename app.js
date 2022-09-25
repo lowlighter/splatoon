@@ -254,7 +254,8 @@ Vue.createApp({
     progress.width = "50%"
 
     //Load weapons
-    this._weapons =[...await fetch("/static/weapon/list.json").then(response => response.json())].map(weapon => ({...weapon, owned:this.has(weapon)}))
+    //Don't load weapons until they're added to the UI because they throw off the count
+    //this._weapons =[...await fetch("/static/weapon/list.json").then(response => response.json())].map(weapon => ({...weapon, owned:this.has(weapon)}))
     progress.width = "70%"
 
     //Load previous settings

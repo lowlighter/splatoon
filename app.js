@@ -84,7 +84,7 @@ Vue.createApp({
           case "z-a":
             return b.name.localeCompare(a.name)
           case "owned":
-            return a.owned === b.owned ? a.level.localeCompare(b.level) : a.owned - b.owned
+            return a.owned === b.owned ? a.name.localeCompare(b.level) : a.owned - b.owned
           default:
             return a.level - b.level
         }

@@ -17,11 +17,11 @@ A web app to help Splatoon completionists in their progress tracking.
 
 Add the following to vercel project:
 
-|                  |                                                    |
-| ---------------- | -------------------------------------------------- |
-| Build command    | `deno run -A build/mod.ts                          |
-| Output directory | `.`                                                |
-| Install command  | `curl -fsSL https://deno.land/x/install/install.sh |
+<table>
+  <tr><th>Build command</th><td><code>deno task build || /vercel/.deno/bin/deno task build</code></td></tr>
+  <tr><th>Output directory</th><td><code>.</code></td></tr>
+  <tr><th>Install command</th><td><code>curl -fsSL https://deno.land/x/install/install.sh | sh</code></td></tr>
+</table>
 
 ### 💻 Run locally
 

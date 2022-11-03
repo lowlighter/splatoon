@@ -1,0 +1,16 @@
+{
+  "lint": {
+    "files": {
+      "exclude": ["build/", "static/", "app.js"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "exclude": ["build/", "static/", "app.js"]
+    }
+  },
+  "tasks": {
+    "build": "deno run --allow-net=raw.githubusercontent.com --allow-read=static --allow-write=static build/mod.ts",
+    "serve": "deno run --allow-net=0.0.0.0 --allow-read https://deno.land/std/http/file_server.ts"
+  }
+}

@@ -23,6 +23,15 @@ Add the following to vercel project:
 | Output directory | `.`                                                |
 | Install command  | `curl -fsSL https://deno.land/x/install/install.sh |
 
+### 💻 Run locally
+
+Install [deno runtime](https://deno.land) and run the following commands:
+
+```shell
+deno task build
+deno task serve
+```
+
 # 📜 License
 
 App developped by [@lowlighter](https://github.com/lowlighter) and licensed

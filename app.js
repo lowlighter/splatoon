@@ -248,9 +248,17 @@ Vue.createApp({
     //Load gears
     this._gears =[...await fetch("/static/gear/list.json").then(response => response.json())].map(gear => ({...gear, owned:this.has(gear)}))
     progress.width = "40%"
-    this._cached.skills = [...new Set(this._gears.map(({skill}) => skill))].filter(skill => skill !== "None")
-    this._cached.brands = [...new Set(this._gears.map(({brand}) => brand))]
-    this._cached.types = [...new Set(this._gears.map(({type}) => type))]
+    {
+      const skills = ["MainInk_Save", "SubInk_Save", "InkRecovery_Up", "HumanMove_Up", "SquidMove_Up", "SpecialIncrease_Up", "RespawnSpecialGauge_Save", "SpecialSpec_Up", "RespawnTime_Save", "JumpTime_Save", "SubSpec_Up", "OpInkEffect_Reduction", "SubEffect_Reduction", "Action_Up", "StartAllUp", "EndAllUp", "MinorityUp", "ComeBack", "SquidMoveSpatter_Reduction", "DeathMarking", "ThermalInk", "Exorcist", "ExSkillDouble", "SuperJumpSign_Hide", "ObjectEffect_Up", "SomersaultLanding"]
+      this._cached.skills = [...new Set(this._gears.map(({skill}) => skill))].filter(skill => skill !== "None").sort((a, b) => skills.indexOf(a) - skills.indexOf(b))
+    }
+    {
+      this._cached.brands = [...new Set(this._gears.map(({brand}) => brand))].sort((a, b) => Number(a.slice(1)) - Number(b.slice(1)))
+    }
+    {
+      const types = ["head", "clothes", "shoes"]
+      this._cached.types = [...new Set(this._gears.map(({type}) => type))].sort((a, b) => types.indexOf(a) - types.indexOf(b))
+    }
     progress.width = "50%"
 
     //Load weapons

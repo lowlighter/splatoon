@@ -5,7 +5,7 @@ import * as images from "./images.ts"
 import * as weapons from "./weapons.ts"
 
 //Build
-const version = "300"
+const version = "600"
 await languages.build()
 await images.build()
 await gears.build(version)

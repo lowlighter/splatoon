@@ -35,6 +35,10 @@ export async function build(version:string) {
   data.forEach(gear => {
     if (gear.id === "Clt_HAP001")
       gear.obtention = "splatfest"
+    if (["Hed_HAP016", "Hed_HAP017", "Hed_HAP018", "Hed_HAP019"].includes(gear.id))
+      gear.obtention = "splatoween"
+      if (["Hed_HAP020", "Hed_HAP021", "Hed_HAP022", "Hed_HAP023"].includes(gear.id))
+      gear.obtention = "frostyfest"
     if (["Hed_TRG000", "Clt_TRG000", "Shs_TRG000"].includes(gear.id))
       gear.obtention = "splatnet"
     if (["Clt_MSN306", "Hed_MSN109", "Hed_MSN306", "Shs_MSN306"].includes(gear.id))

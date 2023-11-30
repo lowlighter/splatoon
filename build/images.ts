@@ -7,6 +7,8 @@ export async function build() {
     //Obtention
     {id:"salmonrun.webp", link:"images/badge/Badge_CoopClearDangerRateMax.webp"},
     {id:"splatfest.webp", link:"images/badge/Badge_FestRankMax.webp"},
+    {id:"splatoween.webp", link:"images/badge/Badge_FestRankMax.webp"},
+    {id:"frostyfest.webp", link:"images/badge/Badge_FestRankMax.webp"},
     {id:"story.webp", link:"images/badge/Badge_Mission_Lv01.webp"},
     {id:"splatnet.webp", link:"images/badge/Badge_OrderVendor_Lv00.webp"},
     {id:"catalog.webp", link:"images/badge/Badge_CatalogueLevel_Lv00.webp"},

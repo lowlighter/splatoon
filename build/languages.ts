@@ -64,6 +64,8 @@ export async function build() {
       text:{
         story:_glossary.ModeMission,
         splatfest:_glossary.FesPhase_01,
+        splatoween:"Splatoween",
+        frostyfest:"Frostyfest",
         amiibo:brands.B99,
         splatnet:_glossary.SDServiceName,
         salmonrun:_menu["L_BtnFestStage_02-T_BlackText_00"],

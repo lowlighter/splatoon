@@ -19,7 +19,7 @@ export const log = {
 
 //Format URL to remote endpoint
 export function url(path:string) {
-  return `https://raw.githubusercontent.com/Leanny/leanny.github.io/master/splat3/${path}`
+  return `https://raw.githubusercontent.com/Leanny/splat3/main/${path}`
 }
 
 //Save JSON content to specified path

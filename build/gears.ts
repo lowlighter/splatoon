@@ -41,7 +41,7 @@ export async function build(version:string) {
       gear.obtention = "frostyfest"
     if (["Hed_HAP024", "Hed_HAP025", "Hed_HAP026", "Hed_HAP027", "Shs_HAP008", "Shs_HAP009", "Shs_HAP010", "Shs_HAP011", "Shs_HAP012", "Shs_HAP013", "Shs_HAP014", "Shs_HAP015", "Shs_HAP016"].includes(gear.id))
       gear.obtention = "springfest"
-    if (["Hed_TRG000", "Clt_TRG000", "Shs_TRG000"].includes(gear.id))
+    if (["Hed_TRG000", "Clt_TRG000", "Shs_TRG000", "Clt_TRG001", "Shs_TRG001"].includes(gear.id))
       gear.obtention = "splatnet"
     if (["Clt_MSN306", "Hed_MSN109", "Hed_MSN306", "Shs_MSN306"].includes(gear.id))
       gear.obtention = "story"

@@ -42,6 +42,7 @@ export async function build() {
       "LayoutMsg/Cmn_CstBase_00":_menu2,
       "LayoutMsg/Plz_ItemMenu_00":_menu3,
       "LayoutMsg/Cmn_ManualAll_00":_menu4,
+      "LayoutMsg/Lobby_SelectBgm_00":_jukebox //For some reason this is the ONLY place there is a string for Side Order
     } =  await fetch(url(`data/language/${id}.json`)).then(response => response.json())
 
     //Format data
@@ -63,9 +64,11 @@ export async function build() {
       skills:Object.fromEntries(Object.keys(_skill).map(k => [k, {name:_skill[k], description:_skill_desc[k]?.replaceAll("\n", " ")}])),
       text:{
         story:_glossary.ModeMission,
+        sideorder:_jukebox.Category_SideOrder_00,
         splatfest:_glossary.FesPhase_01,
         splatoween:"Splatoween",
         frostyfest:"Frostyfest",
+        springfest:"Springfest",
         amiibo:brands.B99,
         splatnet:_glossary.SDServiceName,
         salmonrun:_menu["L_BtnFestStage_02-T_BlackText_00"],

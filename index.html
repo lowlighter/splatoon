@@ -89,6 +89,15 @@
                 <template v-if="gear.obtention === 'shop'">
                   <img src="/images/cash.png" alt="$"> {{ gear.price }}
                 </template>
+                <template v-else-if="gear.obtention === 'bronzescales'">
+                  <img :src="`/static/assets/${gear.obtention}.webp`" alt="B"> {{ gear.scales.bronze }}
+                </template>
+                <template v-else-if="gear.obtention === 'silverscales'">
+                  <img :src="`/static/assets/${gear.obtention}.webp`" alt="S"> {{ gear.scales.silver }}
+                </template>
+                <template v-else-if="gear.obtention === 'goldscales'">
+                  <img :src="`/static/assets/${gear.obtention}.webp`" alt="G"> {{ gear.scales.gold }}
+                </template>
                 <template v-else>
                   <img :src="`/static/assets/${gear.obtention}.webp`" alt="*"> {{ text[gear.obtention] }}
                 </template>

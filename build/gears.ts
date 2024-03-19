@@ -43,7 +43,7 @@ export async function build(version:string) {
       gear.obtention = "splatnet"
     if (["Clt_MSN306", "Hed_MSN109", "Hed_MSN306", "Shs_MSN306"].includes(gear.id))
       gear.obtention = "story"
-    if ((gear.brand === "B97") && gear.obtention === "other")
+    if ((gear.brand === "B97") && (gear.obtention === "other"))
       gear.obtention = "salmonrun"
     if (gear.obtention === "uroko") {
       if (gear.scales.bronze > 0)

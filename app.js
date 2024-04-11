@@ -68,13 +68,13 @@ Vue.createApp({
     weapons() {
       return this._weapons.map(({id, special, ...data}) => ({
         id,
-        icon:`/static/weapon/${id}.webp`,
+        icon:`/static/weapon/${id}.png`,
         name:this._texts.weapons.main[id],
         special:{
           id:special,
           name:this._texts.weapons.special[special].name,
           description:this._texts.weapons.special[special].description,
-          icon:`static/weapon/special/${special}.webp`,
+          icon:`static/weapon/special/${special}.png`,
         },
         ...data,
       })).sort((a, b) => {
@@ -100,17 +100,17 @@ Vue.createApp({
       ).map(({id, brand, skill, ...data}) => ({
         id,
         name:this._texts.gears[id],
-        icon:`/static/gear/${id}.webp`,
+        icon:`/static/gear/${id}.png`,
         brand:{
           id:brand,
           name:this._texts.brands[brand],
-          icon:`/static/brand/${brand}.webp`,
+          icon:`/static/brand/${brand}.png`,
         },
         skill:{
           id:skill,
           name:this._texts.skills[skill].name,
           description:this._texts.skills[skill].description,
-          icon:`static/skill/${skill}.webp`,
+          icon:`static/skill/${skill}.png`,
         },
         ...data
       })).sort((a, b) => {
@@ -136,7 +136,7 @@ Vue.createApp({
         id:skill,
         name:this._texts.skills[skill].name,
         description:this._texts.skills[skill].description,
-        icon:`static/skill/${skill}.webp`,
+        icon:`static/skill/${skill}.png`,
       }))
     },
     //Brands list
@@ -144,7 +144,7 @@ Vue.createApp({
       return this._cached.brands.map(brand => ({
         id:brand,
         name:this._texts.brands[brand],
-        icon:`static/brand/${brand}.webp`,
+        icon:`static/brand/${brand}.png`,
       }))
     },
     //Current progress

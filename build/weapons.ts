@@ -26,9 +26,9 @@ export async function build(version:string) {
   })).filter(({level}:{level:number}) => level >= 0)
 
   //Download images
-  await Promise.allSettled(data.map(({id}:{id:string}) => download(url(`images/weapon_flat/Path_Wst_${id}.webp`), `static/weapon/${id}.webp`)))
-  await Promise.allSettled(data.map(({sub}:{sub:string}) => download(url(`images/subspe/Wsb_${sub}00.webp`), `static/weapon/sub/${sub}.webp`)))
-  await Promise.allSettled(data.map(({special}:{special:string}) => download(url(`images/subspe/Wsp_${special}00.webp`), `static/weapon/special/${special}.webp`)))
+  await Promise.allSettled(data.map(({id}:{id:string}) => download(url(`images/weapon_flat/Path_Wst_${id}.png`), `static/weapon/${id}.png`)))
+  await Promise.allSettled(data.map(({sub}:{sub:string}) => download(url(`images/subspe/Wsb_${sub}00.png`), `static/weapon/sub/${sub}.png`)))
+  await Promise.allSettled(data.map(({special}:{special:string}) => download(url(`images/subspe/Wsp_${special}00.png`), `static/weapon/special/${special}.png`)))
 
   //Save data
   await save(`static/weapon/list.json`, data)

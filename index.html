@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Splatoon 3 Gears search engine and interactive checklist.">
     <title>Splatoon 3 - Gear checklist</title>
-    <link rel="icon" type="image/webp" href="/static/assets/favicon.webp" />
-    <link rel="icon" href="/static/assets/icon.webp" sizes="114x114">
-    <link rel="apple-touch-icon" sizes="114x114" href="/static/assets/icon.webp">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/assets/icon.webp">
+    <link rel="icon" type="image/png" href="/static/assets/favicon.png" />
+    <link rel="icon" href="/static/assets/icon.png" sizes="114x114">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/assets/icon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/assets/icon.png">
     <link href="https://fonts.googleapis.com/css?family=Capriola" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
 
     <div class="loading">
-      <img src="/static/assets/loading.webp" alt="">
+      <img src="/static/assets/loading.png" alt="">
       <div class="progress">
         <div class="inner"></div>
       </div>
@@ -25,10 +25,10 @@
       <nav>
         <section class="condensed">
           <div class="controls" @click="menu($event)">
-            <img src="/static/assets/controls.webp" alt="">
+            <img src="/static/assets/controls.png" alt="">
           </div>
           <div class="category" v-for="type in ['head', 'clothes', 'shoes']" :class="{selected:filters.types.has(type)}" @click="filters.types.has(type) ? filters.types.delete(type) : filters.types.add(type)">
-            <img :src="`/static/assets/${type}.webp`" alt=""> {{ text?.filter[type] }}
+            <img :src="`/static/assets/${type}.png`" alt=""> {{ text?.filter[type] }}
           </div>
           <div class="grow"></div>
           <div class="logo">
@@ -90,7 +90,7 @@
                   <img src="/images/cash.png" alt="$"> {{ gear.price }}
                 </template>
                 <template v-else>
-                  <img :src="`/static/assets/${gear.obtention}.webp`" alt="*"> {{ text[gear.obtention] }}
+                  <img :src="`/static/assets/${gear.obtention}.png`" alt="*"> {{ text[gear.obtention] }}
                 </template>
               </div>
             </footer>
@@ -101,7 +101,7 @@
               <img :src="gear.skill.icon" alt="" :title="`${gear.skill.name}: ${gear.skill.description}`">
             </aside>
             <aside class="slot" v-for="i in (1+gear.rarity)" :data-i="i">
-              <img src="/static/skill/Unknown.webp" alt="">
+              <img src="/static/skill/Unknown.png" alt="">
             </aside>
           </article>
         </template>

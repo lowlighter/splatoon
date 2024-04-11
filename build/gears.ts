@@ -50,9 +50,9 @@ export async function build(version:string) {
   })
 
   //Download images
-  await Promise.allSettled(data.map(({id}) => download(url(`images/gear/${id}.webp`), `static/gear/${id}.webp`)))
-  await Promise.allSettled([...new Set(data.map(({brand}) => brand))].map(id => download(url(`images/brand/${id}.webp`), `static/brand/${id}.webp`)))
-  await Promise.allSettled(["Unknown", ...new Set(data.map(({skill}) => skill))].map(id => download(url(`images/skill/${id}.webp`), `static/skill/${id}.webp`)))
+  await Promise.allSettled(data.map(({id}) => download(url(`images/gear/${id}.png`), `static/gear/${id}.png`)))
+  await Promise.allSettled([...new Set(data.map(({brand}) => brand))].map(id => download(url(`images/brand/${id}.png`), `static/brand/${id}.png`)))
+  await Promise.allSettled(["Unknown", ...new Set(data.map(({skill}) => skill))].map(id => download(url(`images/skill/${id}.png`), `static/skill/${id}.png`)))
 
   //Save data
   await save(`static/gear/list.json`, data)

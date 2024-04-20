@@ -5,14 +5,19 @@ import {url, download} from "./tools.ts"
 export async function build() {
   for (const {id, link} of [
     //Obtention
-    {id:"salmonrun.png", link:"images/badge/Badge_CoopClearDangerRateMax.png"},
-    {id:"splatfest.png", link:"images/badge/Badge_FestRankMax.png"},
-    {id:"splatoween.png", link:"images/badge/Badge_FestRankMax.png"},
-    {id:"frostyfest.png", link:"images/badge/Badge_FestRankMax.png"},
-    {id:"story.png", link:"images/badge/Badge_Mission_Lv01.png"},
-    {id:"splatnet.png", link:"images/badge/Badge_OrderVendor_Lv00.png"},
-    {id:"catalog.png", link:"images/badge/Badge_CatalogueLevel_Lv00.png"},
-    {id:"amiibo.png", link:"images/brand/B99.png"},
+    {id:"salmonrun.webp", link:"images/badge/Badge_CoopClearDangerRateMax.webp"},
+    {id:"bronzescales.webp", link:"images/coop/UrocoIcon_02.webp"},
+    {id:"silverscales.webp", link:"images/coop/UrocoIcon_01.webp"},
+    {id:"goldscales.webp", link:"images/coop/UrocoIcon_00.webp"},
+    {id:"splatfest.webp", link:"images/badge/Badge_FestRankMax.webp"},
+    {id:"splatoween.webp", link:"images/badge/Badge_FestRankMax.webp"},
+    {id:"frostyfest.webp", link:"images/badge/Badge_FestRankMax.webp"},
+    {id:"springfest.webp", link:"images/badge/Badge_FestRankMax.webp"},
+    {id:"story.webp", link:"images/badge/Badge_Mission_Lv01.webp"},
+    {id:"sideorder.webp", link:"images/badge/Badge_Achievement_Sdodr_Lv03.webp"},
+    {id:"splatnet.webp", link:"images/badge/Badge_OrderVendor_Lv00.webp"},
+    {id:"catalog.webp", link:"images/badge/Badge_CatalogueLevel_Lv00.webp"},
+    {id:"amiibo.webp", link:"images/brand/B99.webp"},
     //Categories
     {id:"weapons.png", link:"images/badge/Badge_SpendShop_Weapons_Lv00.png"},
     {id:"gears.png", link:"images/badge/Badge_OrderVendor_Lv00.png"},

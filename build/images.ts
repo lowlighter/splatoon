@@ -19,18 +19,18 @@ export async function build() {
     {id:"catalog.webp", link:"images/badge/Badge_CatalogueLevel_Lv00.webp"},
     {id:"amiibo.webp", link:"images/brand/B99.webp"},
     //Categories
-    {id:"weapons.webp", link:"images/badge/Badge_SpendShop_Weapons_Lv00.webp"},
-    {id:"gears.webp", link:"images/badge/Badge_OrderVendor_Lv00.webp"},
-    {id:"shoes.webp", link:"images/badge/Badge_SpendShop_Shoes_Lv00.webp"},
-    {id:"head.webp", link:"images/badge/Badge_SpendShop_Head_Lv00.webp"},
-    {id:"clothes.webp", link:"images/badge/Badge_SpendShop_Clothes_Lv00.webp"},
-    {id:"locker.webp", link:"images/badge/Badge_SpendShop_Goods_Lv00.webp"},
-    {id:"cards.webp", link:"images/badge/Badge_OrderFood_Lv00.webp"},
+    {id:"weapons.png", link:"images/badge/Badge_SpendShop_Weapons_Lv00.png"},
+    {id:"gears.png", link:"images/badge/Badge_OrderVendor_Lv00.png"},
+    {id:"shoes.png", link:"images/badge/Badge_SpendShop_Shoes_Lv00.png"},
+    {id:"head.png", link:"images/badge/Badge_SpendShop_Head_Lv00.png"},
+    {id:"clothes.png", link:"images/badge/Badge_SpendShop_Clothes_Lv00.png"},
+    {id:"locker.png", link:"images/badge/Badge_SpendShop_Goods_Lv00.png"},
+    {id:"cards.png", link:"images/badge/Badge_OrderFood_Lv00.png"},
     //Other
-    {id:"favicon.webp", link:"images/badge/Badge_SpendShop_Goods_Lv00.webp"},
-    {id:"icon.webp", link:"images/badge/Badge_SpendShop_Goods_Lv00.webp"},
-    {id:"loading.webp", link:"images/badge/Badge_SpendShop_Goods_Lv00.webp"},
-    {id:"controls.webp", link:"images/badge/Badge_WinCount_Pnt_Lv00.webp"},
+    {id:"favicon.png", link:"images/badge/Badge_SpendShop_Goods_Lv00.png"},
+    {id:"icon.png", link:"images/badge/Badge_SpendShop_Goods_Lv00.png"},
+    {id:"loading.png", link:"images/badge/Badge_SpendShop_Goods_Lv00.png"},
+    {id:"controls.png", link:"images/badge/Badge_WinCount_Pnt_Lv00.png"},
   ])
   await download(url(link), `static/assets/${id}`)
 }

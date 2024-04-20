@@ -47,8 +47,16 @@ export async function build(version:string) {
       gear.obtention = "story"
     if (["Clt_SDODR200", "Hed_SDODR200", "Hed_SDODR201", "Hed_SDODR202", "Hed_SDODR203", "Hed_SDODR204", "Shs_SDODR200"].includes(gear.id))
       gear.obtention = "sideorder"
-    if (gear.brand === "B97")
+    if ((gear.brand === "B97") && (gear.obtention === "other"))
       gear.obtention = "salmonrun"
+    if (gear.obtention === "uroko") {
+      if (gear.scales.bronze > 0)
+        gear.obtention = "bronzescales"
+      if (gear.scales.silver > 0)
+        gear.obtention = "silverscales"
+      if (gear.scales.gold > 0)
+        gear.obtention = "goldscales"
+    }
     if ((gear.brand === "B99")||(["Clt_MSN000", "Hed_MSN000", "Shs_MSN000", "Clt_MSN004", "Hed_MSN004", "Shs_MSN004"].includes(gear.id)))
       gear.obtention = "amiibo"
   })

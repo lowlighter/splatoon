@@ -6,6 +6,9 @@ export async function build() {
   for (const {id, link} of [
     //Obtention
     {id:"salmonrun.webp", link:"images/badge/Badge_CoopClearDangerRateMax.webp"},
+    {id:"bronzescales.webp", link:"images/coop/UrocoIcon_02.webp"},
+    {id:"silverscales.webp", link:"images/coop/UrocoIcon_01.webp"},
+    {id:"goldscales.webp", link:"images/coop/UrocoIcon_00.webp"},
     {id:"splatfest.webp", link:"images/badge/Badge_FestRankMax.webp"},
     {id:"splatoween.webp", link:"images/badge/Badge_FestRankMax.webp"},
     {id:"frostyfest.webp", link:"images/badge/Badge_FestRankMax.webp"},
